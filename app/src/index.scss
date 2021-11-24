@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Poppins:wght@700&display=swap');
+
+body {
+  font-family: "IBM Plex Mono";
+  background-color: white;
+  margin: 0;
+}
+
+h2 {
+  text-align: left;
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+
+button,
+.credix-button  {
+  font-family: 'IBM Plex Mono', monospace !important;
+  border: 1px solid black !important;
+  background: white !important;
+  font-weight: bold !important;
+}
+
+.credix-button {
+    font-size: 12px !important;
+    padding: 3px 16px !important;
+    height: 30px !important;
+}
+
+li > button {
+  border: 0px !important;
+  border-radius: 0px !important;
+}
+
+button > span,
+.credix-button {
+  color: black !important;
+}
+
+.MuiDialog-container {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+.MuiDialogTitle-root {
+  background: white !important;
+}
+
+.makeStyles-root-5 .MuiDialogTitle-root {
+  background: white !important;
+}
+
+.makeStyles-root-5 .MuiDialog-paper {
+  padding: 15px;
+}
+
+.makeStyles-root-5 .MuiDialogContent-root .MuiListItem-root .MuiButton-root:hover {
+  background: #E5E5E5 !important;
+
+}
+
+.MuiTypography-h6 {
+  font-family: 'IBM Plex Mono', monospace !important;
+  margin-bottom: 20px !important;
+}
+
+.makeStyles-root-7 .MuiDialogTitle-root {
+  background-color: white !important;
+}
+
+.makeStyles-root-6 .MuiDialogTitle-root {
+  background-color: white !important;
+}
+
+
+button {
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important;
+
+    &:hover {
+      box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%) !important;
+    };
+
+    &:disabled {
+      opacity: 0.3 !important;
+      cursor: not-allowed !important;
+    };
+}
+
+.makeStyles-root-7 {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.MuiButton-root {
+  padding: 20px 20px;
+}
+
+.container-initialize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  button {
+    margin-right: 20px;
+  }
+}
+
+.container-deals {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  button {
+    margin-right: 20px;
+  }
+}

@@ -1,0 +1,57 @@
+.navbar-container {
+  height: 70px;
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-and-tag-line {
+  width: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.tag-line {
+  display: inline-block;
+  font-size: 12px;
+  max-width: 400px;
+  margin-left: 20px;
+  padding-bottom: 3px;
+  font-size: 20px;
+}
+
+.navbar-button {
+  margin-right: 20px !important;
+}
+
+.balance-wallet-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.balance-and-pk {
+  margin-left: 20px;
+  margin-right: 50px;
+
+  h1 {
+    font-size: 20px;
+    margin: 0 !important;
+  }
+
+  p {
+    color: grey;
+    font-size: 10px;
+    margin-top: 3px;
+  }
+}
+
+img.logo {
+  max-height: 40px;
+  margin-left: 20px;
+}

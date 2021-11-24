@@ -1,0 +1,59 @@
+.footer {
+  //width: 300px;
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  border-top: 1px solid lightgrey;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 50px;
+
+  a {
+    text-decoration: none;
+    font-size: 12px;
+    display: inline-block;
+    color: black;
+    margin-left: 50px;
+    margin-bottom: 0px;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}
+
+.footer-left {
+  left: 0;
+  border-right: 1px solid lightgrey;
+}
+
+.footer-right {
+  right: 0;
+  border-left: 1px solid lightgrey;
+}
+
+.start-here {
+  font-weight: bold;
+}
+
+.green {
+  font-weight: bold;
+  color: green !important;
+}
+
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-4px);}
+  60% {transform: translateY(-2px);}
+}
+.bounce {
+  animation-name: bounce;
+}
