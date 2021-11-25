@@ -3,31 +3,13 @@ This project aims at implementing an SPL token faucet in its simplest form using
 
 A reference UI has been implemented to make it easy for your end-users to get DUMMY tokens and use those in your application. The code for this reference UI can be found in the App folder. The hosted version can be found [here](https://credix-finance.github.io/spl-token-faucet/)
 
-## Running the app on Localnet
+# Program
+## Running the program on Localnet
 When using localnet, be sure to run
 ```sh
 $ solana-test-validator
 ```
 This will spin up a local validator that our client interacts with. More info on setting up  a local validator can be found [here](https://docs.solana.com/developing/test-validator).
-
-## Deploying the app to GitHub pages
-Update your package.json following [this article](https://medium.com/swlh/create-deploy-host-react-app-for-free-github-pages-c1f41bed6497). 
-
-In your terminal, navigate to the app folder and run: 
-```sh
-$ npm run deploy
-```
-
-### running tests
-Before it's possible to run tests, all packages need to be installed. Make sure you are in the `app` directory.
-```sh
-$ npm install
-```
-
-Now it's possible to run UI tests.
-```sh
-$ npm test
-```
 
 ## Anchor program building and deployment
 Follow [this tutorial](https://dev.to/dabit3/the-complete-guide-to-full-stack-solana-development-with-react-anchor-rust-and-phantom-3291) for an in depth-explanation on how to build your anchor program and deploy it to the different clusters.
@@ -47,7 +29,7 @@ Now you can deploy it to the right environment.
 anchor deploy
 ```
 
-### running tests
+## Running program tests
 Before it's possible to run tests, all packages need to be installed and `mocha-ts` and `typescript` need to be globally installed.
 ```sh
 $ npm install -g ts-mocha typescript
@@ -60,4 +42,30 @@ $ npm install
 Run all tests by using following command.
 ```sh
 $ anchor test
+```
+
+# Client
+## Running the client locally
+Go to the `app` directory and run following command.
+```sh
+npm start
+```
+
+## Deploying to GitHub pages
+Update your package.json following [this article](https://medium.com/swlh/create-deploy-host-react-app-for-free-github-pages-c1f41bed6497). 
+
+In your terminal, navigate to the `app` folder and run: 
+```sh
+$ npm run deploy
+```
+
+## Running client tests
+Before it's possible to run tests, all packages need to be installed. Make sure you are in the `app` directory.
+```sh
+$ npm install
+```
+
+Now it's possible to run UI tests.
+```sh
+$ npm test
 ```
