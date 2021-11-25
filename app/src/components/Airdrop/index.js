@@ -1,11 +1,10 @@
-import {Button} from '@material-ui/core';
 const { TOKEN_PROGRAM_ID, Token, ASSOCIATED_TOKEN_PROGRAM_ID } = require("@solana/spl-token");
 import {useWallet} from '@solana/wallet-adapter-react';
 import {BN, Program, utils, web3} from '@project-serum/anchor';
 const { SystemProgram } = web3;
 import {useNotify} from '../Utils/notify';
 import Select from 'react-select';
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import {GetProvider} from '../Utils/utils';
 import {programID, dummyMintPk, dummyMintPkBump} from '../../config/config.js';
 import idl from '../../config/spl_token_faucet.json';
@@ -17,7 +16,6 @@ const AirDrop: FC = ({network, setNetwork}) => {
     const notify = useNotify();
     const [selectedOption, setSelectedOption] = useState("https://api.devnet.solana.com");
     const [amount, setAmount] = useState(1000);
-    //const options = ['https://api.devnet.solana.com', 'https://api.testnet.solana.com', 'http://127.0.0.1:8899']
     const options = [
       { value: 'https://api.devnet.solana.com', label: 'DEVNET' },
       { value: 'https://api.testnet.solana.com', label: 'TESTNET' },
@@ -38,12 +36,10 @@ const AirDrop: FC = ({network, setNetwork}) => {
         await airdropTokens(amount, dummyMintPk, dummyMintPkBump);
     };
 
-
     async function airdropTokens(amount, mintPda, mintPdaBump) {
       try {
         const [provider, connection] = GetProvider(wallet, network);
         const program = new Program(idl, programID, provider);
-        console.log(program)
         let amountToAirdrop = new BN(amount * 1000000);
 
         let associatedTokenAccount = await Token.getAssociatedTokenAddress(
