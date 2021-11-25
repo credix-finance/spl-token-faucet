@@ -26,8 +26,8 @@ const App: FC = () => {
         <WalletDialogProvider>
           <Router>
             <Navbar network={network} />
-            < AirDrop network={network} setNetwork={setNetwork} />
-            < Footer />
+            <AirDrop network={network} setNetwork={setNetwork} />
+            <Footer />
           </Router>
         </WalletDialogProvider>
       </WalletProvider>
