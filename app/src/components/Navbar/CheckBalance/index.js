@@ -1,6 +1,6 @@
 import {Button} from '@material-ui/core';
 import {useWallet} from '@solana/wallet-adapter-react';
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import {GetProvider} from '../../Utils/utils';
 import {dummyMintPk} from '../../../config/config.js';
 

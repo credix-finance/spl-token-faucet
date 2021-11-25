@@ -1,3 +1,5 @@
+import {Button} from "@material-ui/core";
+
 const { TOKEN_PROGRAM_ID, Token, ASSOCIATED_TOKEN_PROGRAM_ID } = require("@solana/spl-token");
 import {useWallet} from '@solana/wallet-adapter-react';
 import {BN, Program, utils, web3} from '@project-serum/anchor';
@@ -14,6 +16,8 @@ import "./style.scss";
 const AirDrop: FC = ({network, setNetwork}) => {
     const wallet = useWallet();
     const notify = useNotify();
+    const [provider, connection] = GetProvider(wallet, network);
+    const publicKey = provider.wallet.publicKey;
     const [selectedOption, setSelectedOption] = useState("https://api.devnet.solana.com");
     const [amount, setAmount] = useState(1000);
     const options = [
@@ -98,18 +102,22 @@ const AirDrop: FC = ({network, setNetwork}) => {
                 })}
                />
              </div>
-             <form onSubmit={handleSubmit} className="form-row">
+             <form className="form-row">
                <input
                  onChange={handleChangeAmount}
                  defaultValue={1000}
                  type="number"
                  step="100"
-                 className="stake-input credix-button MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary balance-button"
+                 className="navbar-button stake-input credix-button MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary balance-button"
                 />
-               <input type="submit"
-                 value="GET DUMMY"
-                 className="stake-submit credix-button MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary balance-button"
-                />
+                <Button
+                    variant="contained"
+                    className="stake-submit MuiButton-containedPrimary balance-button credix-button"
+                    onClick={handleSubmit}
+                    disabled={!publicKey}
+                >
+                 GET DUMMY
+                </Button>
              </form>
            </div>
         </div>
