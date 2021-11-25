@@ -1,7 +1,7 @@
 # SPL token faucet
 This project aims at implementing an SPL token faucet in its simplest form using Anchor. Faucets are a must-have when developing dApps to test out token flows. A faucet allows you to receive an arbitrary amount of tokens; always coming from the same Mint. At Credix, we use this faucet to "mimic" USDC on testnet and devnet (as the USDC faucet is only available on testnet AND only allows 5USDC per IP, which is very limiting). The program is deployed on both testnet and devnet at `4sN8PnN2ki2W4TFXAfzR645FWs8nimmsYeNtxM8RBK6A` and the Mints PK is `Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr` on both networks.
 
-A reference UI has been implemented to make it easy for your end-users to get DUMMY tokens and use those in your application. The code for this reference UI can be found in the App folder. The hosted version can be found [here](https://credix-finance.github.io/spl-token-faucet/)
+A reference UI has been implemented to make it easy for your end-users to get DUMMY tokens and use those in your application. The code for this reference UI can be found in the App folder. The hosted version can be found [here](https://credix-finance.github.io/spl-token-faucet/).
 
 # Program
 ## Running the program on Localnet
