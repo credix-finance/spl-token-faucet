@@ -18,7 +18,46 @@ In your terminal, navigate to the app folder and run:
 $ npm run deploy
 ```
 
+### running tests
+Before it's possible to run tests, all packages need to be installed. Make sure you are in the `app` directory.
+```sh
+$ npm install
+```
+
+Now it's possible to run UI tests.
+```sh
+$ npm test
+```
+
 ## Anchor program building and deployment
 Follow [this tutorial](https://dev.to/dabit3/the-complete-guide-to-full-stack-solana-development-with-react-anchor-rust-and-phantom-3291) for an in depth-explanation on how to build your anchor program and deploy it to the different clusters.
 
+In order to build the program use following command.
+```sh
+$ anchor build
+```
 
+Copy the keypair (not in git) into the build folder to override the generated keypair by Anchor.
+```sh
+cp spl_token_faucet-keypair.json ./target/deploy/spl_token_faucet-keypair.json
+```
+
+Now you can deploy it to the right environment.
+```sh
+anchor deploy
+```
+
+### running tests
+Before it's possible to run tests, all packages need to be installed and `mocha-ts` and `typescript` need to be globally installed.
+```sh
+$ npm install -g ts-mocha typescript
+```
+
+```sh
+$ npm install
+```
+
+Run all tests by using following command.
+```sh
+$ anchor test
+```
