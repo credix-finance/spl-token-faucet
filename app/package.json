@@ -1,5 +1,6 @@
 {
   "name": "credix-mvp",
+  "homepage": "https://credix-finance.github.io/spl-token-faucet",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
