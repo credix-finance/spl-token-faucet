@@ -11,6 +11,11 @@ const App: FC = () => {
   const [network, setNetwork] = useState("https://api.devnet.solana.com");
   const [reload, setReload] = useState(true);
   const [autoConnect, _setAutoConnect] = useLocalStorage('autoConnect', false);
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  let tokenName = params.get('token-name');
+  if (!tokenName) { tokenName = "DUMMY"; }
+
   const wallets = useMemo(
         () => [
             getPhantomWallet(),
@@ -26,8 +31,8 @@ const App: FC = () => {
       <WalletProvider wallets={wallets} autoConnect={autoConnect}>
         <WalletDialogProvider>
           <Router>
-            <Navbar reload={reload} network={network} />
-            <AirDrop reload={reload} setReload={setReload} network={network} setNetwork={setNetwork} />
+            <Navbar tokenName={tokenName} reload={reload} network={network} />
+            <AirDrop tokenName={tokenName} reload={reload} setReload={setReload} network={network} setNetwork={setNetwork} />
             <Footer />
           </Router>
         </WalletDialogProvider>
