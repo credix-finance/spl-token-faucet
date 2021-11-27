@@ -9,6 +9,7 @@ import AirDrop from './components/Airdrop';
 
 const App: FC = () => {
   const [network, setNetwork] = useState("https://api.devnet.solana.com");
+  const [reload, setReload] = useState(true);
   const [autoConnect, _setAutoConnect] = useLocalStorage('autoConnect', false);
   const wallets = useMemo(
         () => [
@@ -25,8 +26,8 @@ const App: FC = () => {
       <WalletProvider wallets={wallets} autoConnect={autoConnect}>
         <WalletDialogProvider>
           <Router>
-            <Navbar network={network} />
-            <AirDrop network={network} setNetwork={setNetwork} />
+            <Navbar reload={reload} network={network} />
+            <AirDrop reload={reload} setReload={setReload} network={network} setNetwork={setNetwork} />
             <Footer />
           </Router>
         </WalletDialogProvider>

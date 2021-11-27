@@ -1,10 +1,10 @@
 import {Button} from '@material-ui/core';
 import {useWallet} from '@solana/wallet-adapter-react';
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {GetProvider} from '../../Utils/utils';
 import {dummyMintPk} from '../../../config/config.js';
 
-const CheckBalance: FC = ({network, balance, setBalance}) => {
+const CheckBalance: FC = ({network, reload, balance, setBalance, solBalance, setSolBalance}) => {
     const wallet = useWallet();
     const [provider, connection] = GetProvider(wallet, network);
     const publicKey = provider.wallet.publicKey;
@@ -14,6 +14,10 @@ const CheckBalance: FC = ({network, balance, setBalance}) => {
       'http://127.0.0.1:8899': 'LOCALNET'
     }
 
+    useEffect(() => {
+      checkBalance();
+    }, [reload]);
+
     async function checkBalance() {
       try {
         const parsedTokenAccountsByOwner = await connection.getParsedTokenAccountsByOwner(provider.wallet.publicKey, { mint: dummyMintPk });
@@ -22,7 +26,14 @@ const CheckBalance: FC = ({network, balance, setBalance}) => {
         console.log(err);
         balance = 0;
       }
+      try {
+        solBalance = await connection.getBalance(provider.wallet.publicKey);
+      } catch (err) {
+        console.log(err);
+        solBalance = 0;
+      }
       setBalance(Math.round(balance * 100)/100);
+      setSolBalance(Math.round(((solBalance / 1000000000) * 100)/100));
     }
 
     return (
