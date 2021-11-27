@@ -27,16 +27,20 @@ const useStyles = makeStyles({
 export function useNotify() {
     const styles = useStyles();
     const { enqueueSnackbar } = useSnackbar();
+    const clusterMap = {
+      "https://api.devnet.solana.com": "devnet",
+      "https://api.testnet.solana.com": "testnet"
+    }
 
     return useCallback(
-        (variant: VariantType, message: string, signature?: string) => {
+        (variant: VariantType, message: string, signature?: string, cluster?: string) => {
             enqueueSnackbar(
                 <span className={styles.notification}>
                     {message}
                     {signature && (
                         <Link
                             className={styles.link}
-                            href={`https://explorer.solana.com/tx/${signature}?cluster=devnet`}
+                            href={`https://explorer.solana.com/tx/${signature}?cluster=${clusterMap[cluster]}`}
                             target="_blank"
                         >
                             Transaction

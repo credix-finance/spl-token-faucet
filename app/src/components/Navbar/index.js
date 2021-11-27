@@ -4,9 +4,9 @@ import CheckBalance from './CheckBalance';
 import {useSessionStorage} from 'react-use';
 import "./style.scss";
 
-const Navbar: FC = ({network}) => {
+const Navbar: FC = ({reload, network}) => {
   const [balance, setBalance] = useSessionStorage('balance');
-  const [stake, setStake] = useSessionStorage('stake');
+  const [solBalance, setSolBalance] = useSessionStorage('balance');
 
   return (
     <div className="navbar-container">
@@ -15,10 +15,10 @@ const Navbar: FC = ({network}) => {
       </div>
       <div className="balance-wallet-container">
         <WalletMultiButton className="navbar-button credix-button" />
-        <CheckBalance balance={balance} setBalance={setBalance} network={network} className="navbar-button" />
+        <CheckBalance reload={reload} balance={balance} setBalance={setBalance} solBalance={solBalance} setSolBalance={setSolBalance} network={network} className="navbar-button" />
         <div>
           <div className="balance-and-pk">
-            <h1>Balance: {balance} DUMMY</h1>
+            <h1>Balance: {solBalance} SOL, {balance} DUMMY</h1>
           </div>
         </div>
       </div>

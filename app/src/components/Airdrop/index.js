@@ -1,5 +1,5 @@
 import {Button} from "@material-ui/core";
-
+import { LAMPORTS_PER_SOL, TransactionSignature } from '@solana/web3.js';
 const { TOKEN_PROGRAM_ID, Token, ASSOCIATED_TOKEN_PROGRAM_ID } = require("@solana/spl-token");
 import {useWallet} from '@solana/wallet-adapter-react';
 import {BN, Program, utils, web3} from '@project-serum/anchor';
@@ -13,13 +13,13 @@ import idl from '../../config/spl_token_faucet.json';
 
 import "./style.scss";
 
-const AirDrop: FC = ({network, setNetwork}) => {
+const AirDrop: FC = ({reload, setReload, network, setNetwork}) => {
     const wallet = useWallet();
     const notify = useNotify();
     const [provider, connection] = GetProvider(wallet, network);
     const publicKey = provider.wallet.publicKey;
     const [selectedOption, setSelectedOption] = useState("https://api.devnet.solana.com");
-    const [amount, setAmount] = useState(1000);
+    const [splAmount, setSplAmount] = useState(1000);
     const options = [
       { value: 'https://api.devnet.solana.com', label: 'DEVNET' },
       { value: 'https://api.testnet.solana.com', label: 'TESTNET' },
@@ -31,16 +31,31 @@ const AirDrop: FC = ({network, setNetwork}) => {
       setNetwork(option.value);
     };
 
-    const handleChangeAmount = (event) => {
-      setAmount(event.target.value);
+    const handleChangeSplAmount = (event) => {
+      setSplAmount(event.target.value);
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmitSpl = async (event) => {
         event.preventDefault();
-        await airdropTokens(amount, dummyMintPk, dummyMintPkBump);
+        await airdropSplTokens(splAmount, dummyMintPk, dummyMintPkBump);
     };
 
-    async function airdropTokens(amount, mintPda, mintPdaBump) {
+    const handleSubmitSol = async (event) => {
+        const [provider, connection] = GetProvider(wallet, network);
+        let signature = '';
+        try {
+            signature = await connection.requestAirdrop(provider.wallet.publicKey, LAMPORTS_PER_SOL);
+            notify('info', 'SOL airdrop requested:', signature, network);
+            await connection.confirmTransaction(signature, 'processed');
+            notify('success', 'SOL airdrop successful!', signature, network);
+            setReload(!reload);
+        } catch (err) {
+            notify('error', `Airdrop failed! ${error?.message}`, signature, network);
+        }
+    };
+
+    async function airdropSplTokens(amount, mintPda, mintPdaBump) {
+      let signature = '';
       try {
         const [provider, connection] = GetProvider(wallet, network);
         const program = new Program(idl, programID, provider);
@@ -53,7 +68,7 @@ const AirDrop: FC = ({network, setNetwork}) => {
           provider.wallet.publicKey,
         );
 
-        await program.rpc.airdrop(
+        signature = await program.rpc.airdrop(
           mintPdaBump,
           amountToAirdrop,
           {
@@ -69,18 +84,19 @@ const AirDrop: FC = ({network, setNetwork}) => {
             signers: [],
           }
         );
-        notify('success', `Successful airdrop of ${amount} DUMMY`);
+        notify('info', 'DUMMY Airdrop requested:', signature, network);
+        await connection.confirmTransaction(signature, 'processed');
+        notify('success', 'DUMMY Airdrop successful!', signature, network);
+        setReload(!reload);
       } catch (err) {
-        notify('error', `Transaction failed! ${err?.message}`);
-      }
+            notify('error', `DUMMY Airdrop failed! ${error?.message}`, signature, network);
+        }
     }
 
     return (
         <div className="airdrop-container">
           <div className="airdrop-wrapper">
-            <h3>DUMMY AIRDROP</h3>
-            <p>Receive dummy SPL tokens, always coming from the same mint.</p>
-            <p>Mint PK: Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr</p>
+            <h3>NETWORK SELECTION</h3>
             <div className="network-dropdown-wrapper">
               <Select
                 className="network-dropdown navbar-button react-select-container"
@@ -102,9 +118,22 @@ const AirDrop: FC = ({network, setNetwork}) => {
                 })}
                />
              </div>
+            <h3>SOL AIRDROP</h3>
+            <p>Receive 1 SOL; you will need this to pay for transaction fees.</p>
+            <Button
+                variant="contained"
+                className="stake-submit MuiButton-containedPrimary balance-button credix-button sol-airdrop"
+                onClick={handleSubmitSol}
+                disabled={!publicKey}
+            >
+             GET 1 SOL
+            </Button>
+            <h3>DUMMY AIRDROP</h3>
+            <p>Receive dummy SPL tokens, always coming from the same mint.</p>
+            <p>Mint PK: Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr</p>
              <form className="form-row">
                <input
-                 onChange={handleChangeAmount}
+                 onChange={handleChangeSplAmount}
                  defaultValue={1000}
                  type="number"
                  step="100"
@@ -113,7 +142,7 @@ const AirDrop: FC = ({network, setNetwork}) => {
                 <Button
                     variant="contained"
                     className="stake-submit MuiButton-containedPrimary balance-button credix-button"
-                    onClick={handleSubmit}
+                    onClick={handleSubmitSpl}
                     disabled={!publicKey}
                 >
                  GET DUMMY

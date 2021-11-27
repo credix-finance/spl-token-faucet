@@ -1,7 +1,8 @@
 .network-dropdown {
   font-size: 12px !important;
   padding: 0;
-  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-top: 10px;
   width: 100%;
 }
 
@@ -22,7 +23,7 @@
 .airdrop-wrapper {
   border: 1px solid black;
   padding: 40px;
-  height: 150px;
+  //height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,6 +39,12 @@
     width: 100%;
     margin: 0;
   }
+}
+
+.sol-airdrop {
+  width: 100% !important;
+  margin-top: 10px !important;
+  margin-bottom: 40px !important;
 }
 
 .stake-input {
