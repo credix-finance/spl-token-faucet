@@ -148,6 +148,9 @@ const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
              GET {tokenName}
             </Button>
          </form>
+         <h3>CUSTOMIZE THIS FAUCET</h3>
+         <p>Using the query parameter token-name, you can customize the UI to your needs. E.g. if we send the faucet to our test-users, we use the url <a href="https://spl-token-faucet.com?token-name=USDC" target="_blank">spl-token-faucet.com?token-name=USDC</a> to make the app look like a USDC faucet. If you want to mock the issuance of a TST token,
+         you could send the url <a href="https://spl-token-faucet.com?token-name=TST" target="_blank">spl-token-faucet.com?token-name=TST</a></p>
        </div>
     </div>
   );

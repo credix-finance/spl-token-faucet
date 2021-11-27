@@ -24,6 +24,7 @@
   border: 1px solid black;
   padding: 40px;
   display: flex;
+  max-width: 500px;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
@@ -55,6 +56,7 @@
   justify-content: flex-end;
   display: flex;
   margin-top: 10px;
+  margin-bottom: 40px;
 
   input {
     margin-left: 10px;
