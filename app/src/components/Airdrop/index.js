@@ -50,7 +50,7 @@ const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
       notify('success', 'SOL airdrop successful!', signature, network);
       setReload(!reload);
     } catch (err) {
-      notify('error', `Airdrop failed! ${error?.message}`, signature, network);
+      notify('error', `Airdrop failed! ${err?.message}`, signature, network);
     }
   };
 
@@ -89,7 +89,7 @@ const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
       notify('success', `${tokenName} Airdrop successful!`, signature, network);
       setReload(!reload);
     } catch (err) {
-      notify('error', `${tokenName} Airdrop failed! ${error?.message}`, signature, network);
+      notify('error', `${tokenName} Airdrop failed! ${err?.message}`, signature, network);
     }
   }
 
