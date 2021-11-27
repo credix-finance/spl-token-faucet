@@ -4,21 +4,21 @@ import CheckBalance from './CheckBalance';
 import {useSessionStorage} from 'react-use';
 import "./style.scss";
 
-const Navbar: FC = ({reload, network}) => {
+const Navbar: FC = ({tokenName, reload, network}) => {
   const [balance, setBalance] = useSessionStorage('balance');
   const [solBalance, setSolBalance] = useSessionStorage('balance');
 
   return (
     <div className="navbar-container">
       <div className="logo-and-tag-line">
-        <span className="tag-line">SPL-DUMMY-TOKEN-FAUCET</span>
+        <span className="tag-line">{tokenName}-TOKEN-FAUCET</span>
       </div>
       <div className="balance-wallet-container">
         <WalletMultiButton className="navbar-button credix-button" />
         <CheckBalance reload={reload} balance={balance} setBalance={setBalance} solBalance={solBalance} setSolBalance={setSolBalance} network={network} className="navbar-button" />
         <div>
           <div className="balance-and-pk">
-            <h1>Balance: {solBalance} SOL, {balance} DUMMY</h1>
+            <h1>Balance: {solBalance} SOL, {balance} {tokenName}</h1>
           </div>
         </div>
       </div>

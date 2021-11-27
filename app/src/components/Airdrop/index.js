@@ -13,7 +13,7 @@ import idl from '../../config/spl_token_faucet.json';
 
 import "./style.scss";
 
-const AirDrop: FC = ({reload, setReload, network, setNetwork}) => {
+const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
   const wallet = useWallet();
   const notify = useNotify();
   const [provider, connection] = GetProvider(wallet, network);
@@ -84,12 +84,12 @@ const AirDrop: FC = ({reload, setReload, network, setNetwork}) => {
           signers: [],
         }
       );
-      notify('info', 'DUMMY Airdrop requested:', signature, network);
+      notify('info', `${tokenName} Airdrop requested:`, signature, network);
       await connection.confirmTransaction(signature, 'processed');
-      notify('success', 'DUMMY Airdrop successful!', signature, network);
+      notify('success', `${tokenName} Airdrop successful!`, signature, network);
       setReload(!reload);
     } catch (err) {
-      notify('error', `DUMMY Airdrop failed! ${error?.message}`, signature, network);
+      notify('error', `${tokenName} Airdrop failed! ${error?.message}`, signature, network);
     }
   }
 
@@ -128,7 +128,7 @@ const AirDrop: FC = ({reload, setReload, network, setNetwork}) => {
         >
          GET 1 SOL
         </Button>
-        <h3>DUMMY AIRDROP</h3>
+        <h3>{tokenName} AIRDROP</h3>
         <p>Receive dummy SPL tokens, always coming from the same mint.</p>
         <p>Mint PK: Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr</p>
          <form className="form-row">
@@ -145,7 +145,7 @@ const AirDrop: FC = ({reload, setReload, network, setNetwork}) => {
                 onClick={handleSubmitSpl}
                 disabled={!publicKey}
             >
-             GET DUMMY
+             GET {tokenName}
             </Button>
          </form>
        </div>
