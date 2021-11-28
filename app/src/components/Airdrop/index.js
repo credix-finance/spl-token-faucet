@@ -29,6 +29,7 @@ const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
   const handleChange = (option) => {
     setSelectedOption(option);
     setNetwork(option.value);
+    setReload(!reload);
   };
 
   const handleChangeSplAmount = (event) => {
