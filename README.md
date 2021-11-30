@@ -3,71 +3,73 @@ This project aims at implementing an SPL token faucet in its simplest form using
 
 A reference UI has been implemented to make it easy for your end-users to get DUMMY tokens and use those in your application. The code for this reference UI can be found in the App folder. The hosted version can be found [here](https://spl-token-faucet.com/).
 
-Using the query parameter `token-name`, you can customize the UI to your needs. E.g. if we send the faucet to our test-users, we use the url https://spl-token-faucet.com?token-name=USDC to make the app look as it's a USDC faucet. If I want to mock the issuance of a TST token, I could send the url https://spl-token-faucet.com?token-name=TST.   
+Using the query parameter `token-name`, you can customize the UI to your needs. E.g. if we send the faucet to our test-users, we use the url https://spl-token-faucet.com?token-name=USDC to make the app look as it's a USDC faucet. If I want to mock the issuance of a TST token, I could send the url https://spl-token-faucet.com?token-name=TST.
 
 # Program
 ## Running the program on Localnet
-When using localnet, be sure to run
-```sh
-$ solana-test-validator
+
+Swith to localnet.
+
+```bash
+solana config set --url http://127.0.0.1:8899
+```
+
+Run
+```bash
+rm -rf test-ledger && solana-test-validator
 ```
 This will spin up a local validator that our client interacts with. More info on setting up  a local validator can be found [here](https://docs.solana.com/developing/test-validator).
 
 ## Anchor program building and deployment
 Follow [this tutorial](https://dev.to/dabit3/the-complete-guide-to-full-stack-solana-development-with-react-anchor-rust-and-phantom-3291) for an in depth-explanation on how to build your anchor program and deploy it to the different clusters.
 
-In order to build the program use following command.
-```sh
-$ anchor build
-```
 
-Copy the keypair (not in git) into the build folder to override the generated keypair by Anchor.
-```sh
+Copy the keypair into the build folder to override the generated keypair by Anchor. Normally, we never upload keypairs to GitHub, however we did upload this one so you can deploy the program locally using the same program id. You cannot upgrade the deployed versions (devnet, testnet) as their upgrade authority is already set.
+```bash
 cp spl_token_faucet-keypair.json ./target/deploy/spl_token_faucet-keypair.json
 ```
 
-Now you can deploy it to the right environment.
-```sh
+In order to build the program use following command.
+```bash
+anchor build
+```
+
+Now you can deploy it.
+```bash
 anchor deploy
 ```
 
+You can now go to [the spl-token-faucet](https://spl-token-faucet.com/) and airdrop yourself some SOL and DUMMY tokens.
+
 ## Running program tests
 Before it's possible to run tests, all packages need to be installed and `mocha-ts` and `typescript` need to be globally installed.
-```sh
-$ npm install -g ts-mocha typescript
+```bash
+npm install -g ts-mocha typescript
 ```
 
-```sh
-$ npm install
+```bash
+npm install
 ```
 
 Run all tests by using following command.
-```sh
-$ anchor test
+```bash
+anchor test
 ```
 
 # Client
 ## Running the client locally
 Go to the `app` directory and run following command.
-```sh
+```bash
 npm start
-```
-
-## Deploying to GitHub pages
-Update your package.json following [this article](https://medium.com/swlh/create-deploy-host-react-app-for-free-github-pages-c1f41bed6497). 
-
-In your terminal, navigate to the `app` folder and run: 
-```sh
-$ npm run deploy
 ```
 
 ## Running client tests
 Before it's possible to run tests, all packages need to be installed. Make sure you are in the `app` directory.
-```sh
-$ npm install
+```bash
+npm install
 ```
 
 Now it's possible to run UI tests.
-```sh
-$ npm test
+```bash
+npm test
 ```
