@@ -14,9 +14,9 @@ const CheckBalance: FC = ({network, reload, balance, setBalance, solBalance, set
       'http://127.0.0.1:8899': 'LOCALNET'
     }
 
-    useEffect(() => {
-      checkBalance();
-    }, [reload]);
+  useEffect(() => {
+    checkBalance();
+  }, [reload, wallet]);
 
     async function checkBalance() {
       try {
