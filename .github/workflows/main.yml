@@ -17,6 +17,9 @@ jobs:
     - run : npm run build
       working-directory: ./app
       shell: bash
+    - run: cp CNAME ./build/CNAME
+      working-directory: ./app
+      shell: bash
     - run : git config user.name github-actions
       working-directory: ./app
       shell: bash
