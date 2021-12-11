@@ -31,6 +31,11 @@ Now you can deploy it to the right environment.
 anchor deploy
 ```
 
+If you want to do an airdrop of 1000 DUMMY tokens without running the client to the current provider, run following script.
+```shell
+ANCHOR_WALLET=~/.config/solana/id.json ANCHOR_PROVIDER_URL=http://127.0.0.1:8899 node setup/usdc_airdrop.js
+```
+
 ## Running program tests
 Before it's possible to run tests, all packages need to be installed and `mocha-ts` and `typescript` need to be globally installed.
 ```sh
