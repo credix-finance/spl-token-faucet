@@ -45,12 +45,11 @@ pub struct Airdrop<'info> {
         init_if_needed,
         payer = payer,
         associated_token::mint = mint,
-        associated_token::authority = payer
+        associated_token::authority = receiver
     )]
     pub destination: Account<'info, TokenAccount>,
-
-    #[account(mut)]
     pub payer: Signer<'info>,
+    pub receiver: AccountInfo<'info>,
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
     pub associated_token_program: Program<'info, AssociatedToken>,

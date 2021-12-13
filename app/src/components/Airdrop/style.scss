@@ -1,3 +1,14 @@
+.airdrop-pk-input {
+  width: 100%; 
+  margin-top: 10px !important; 
+  margin-bottom: 40px !important; 
+  text-transform: none !important; 
+
+  &:disabled {
+    opacity: 0.3; 
+  }
+}
+
 .network-dropdown {
   font-size: 12px !important;
   padding: 0;
@@ -50,6 +61,10 @@
 .stake-input {
   flex-grow: 2;
   margin-left: 0 !important;
+
+  &:disabled {
+    opacity: 0.3; 
+  }
 }
 .form-row {
   width: 100%;

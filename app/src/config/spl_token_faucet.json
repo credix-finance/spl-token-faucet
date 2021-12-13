@@ -17,8 +17,13 @@
         },
         {
           "name": "payer",
-          "isMut": true,
+          "isMut": false,
           "isSigner": true
+        },
+        {
+          "name": "receiver",
+          "isMut": false,
+          "isSigner": false
         },
         {
           "name": "systemProgram",
