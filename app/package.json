@@ -24,10 +24,10 @@
     "react-ga": "^3.3.0",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-select": "^5.2.1",
     "react-use": "^17.3.1",
     "sass": "^1.38.2",
-    "web-vitals": "^1.1.2",
-    "react-select": "^5.2.1"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
