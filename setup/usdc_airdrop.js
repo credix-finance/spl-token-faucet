@@ -33,6 +33,7 @@ async function airdrop_usdc() {
         amountToAirdrop,
         {
             accounts: {
+                receiver: program.provider.wallet.publicKey, 
                 payer: program.provider.wallet.publicKey,
                 mint: mintPda,
                 destination: associatedTokenAccount,
