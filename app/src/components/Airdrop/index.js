@@ -1,9 +1,7 @@
 import {Button} from "@material-ui/core";
 import { LAMPORTS_PER_SOL, TransactionSignature, PublicKey } from '@solana/web3.js';
-const { TOKEN_PROGRAM_ID, Token, ASSOCIATED_TOKEN_PROGRAM_ID } = require("@solana/spl-token");
 import {useWallet} from '@solana/wallet-adapter-react';
 import {BN, Program, utils, web3} from '@project-serum/anchor';
-const { SystemProgram } = web3;
 import {useNotify} from '../Utils/notify';
 import Select from 'react-select';
 import React, {FC, useState, useEffect} from 'react';
@@ -12,6 +10,8 @@ import {programID, dummyMintPk, dummyMintPkBump} from '../../config/config.js';
 import idl from '../../config/spl_token_faucet.json';
 
 import "./style.scss";
+const { TOKEN_PROGRAM_ID, Token, ASSOCIATED_TOKEN_PROGRAM_ID } = require("@solana/spl-token");
+const { SystemProgram } = web3;
 
 const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
   const wallet = useWallet();
@@ -180,7 +180,7 @@ const AirDrop: FC = ({tokenName, reload, setReload, network, setNetwork}) => {
             </Button>
          </form>
          <h3>Customize this faucet</h3>
-         <p>Give DUMMY a different name: <a href="https://spl-token-faucet.com?token-name=USDC" target="_blank">spl-token-faucet.com?token-name=USDC</a></p>
+         <p>Give DUMMY a different name: <a href="https://spl-token-faucet.com?token-name=USDC" target="_blank" rel="noreferrer">spl-token-faucet.com?token-name=USDC</a></p>
        </div>
     </div>
   );

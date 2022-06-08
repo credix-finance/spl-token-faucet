@@ -10,6 +10,10 @@ declare_id!("4sN8PnN2ki2W4TFXAfzR645FWs8nimmsYeNtxM8RBK6A");
 pub mod spl_token_faucet {
     use super::*;
 
+    pub fn initialize_faucet(_ctx: Context<InitializeFaucet>, _mint_bump: u8) -> ProgramResult {
+        Ok(())
+    }
+
     pub fn airdrop(ctx: Context<Airdrop>, mint_bump: u8, amount: u64) -> ProgramResult {
         anchor_spl::token::mint_to(
             CpiContext::new_with_signer(
@@ -29,8 +33,8 @@ pub mod spl_token_faucet {
 
 
 #[derive(Accounts)]
-#[instruction(mint_bump: u8, amount: u64)]
-pub struct Airdrop<'info> {
+#[instruction(mint_bump: u8)]
+pub struct InitializeFaucet<'info> {
     #[account(
         init_if_needed,
         payer = payer,
@@ -38,6 +42,20 @@ pub struct Airdrop<'info> {
         bump = mint_bump,
         mint::decimals = 6,
         mint::authority = mint
+    )]
+    pub mint: Account<'info, Mint>,
+    pub payer: Signer<'info>,
+    pub system_program: Program<'info, System>,
+    pub token_program: Program<'info, Token>,
+    pub rent: Sysvar<'info, Rent>,
+}
+
+#[derive(Accounts)]
+#[instruction(mint_bump: u8, amount: u64)]
+pub struct Airdrop<'info> {
+    #[account(
+        seeds = [b"faucet-mint".as_ref()],
+        bump = mint_bump
     )]
     pub mint: Account<'info, Mint>,
 
@@ -55,4 +73,3 @@ pub struct Airdrop<'info> {
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
 }
-

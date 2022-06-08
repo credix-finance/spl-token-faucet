@@ -1,3 +1,29 @@
+.navbar-wrapper {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+}
+
+.notification-bar {
+  height: 40px;
+  width: 100%;
+  top: 0;
+  background-color: #7cd06e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-weight: bolder;
+    font-size: 14px;
+  }
+
+  a {
+    color: black;
+    margin-left: 10px;
+  }
+}
+
 .navbar-container {
   height: 70px;
   width: 100%;
@@ -5,9 +31,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 0;
-  z-index: 1000;
 }
 
 .logo-and-tag-line {
