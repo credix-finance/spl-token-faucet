@@ -1,68 +1,68 @@
 {
-  "name": "credix-mvp",
-  "homepage": "https://spl-token-faucet.com",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/icons": "^4.11.2",
-    "@project-serum/anchor": "^0.18.2",
-    "@solana/spl-token": "^0.1.8",
-    "@solana/wallet-adapter-base": "^0.7.0",
-    "@solana/wallet-adapter-material-ui": "^0.13.1",
-    "@solana/wallet-adapter-react": "^0.13.1",
-    "@solana/wallet-adapter-wallets": "^0.11.3",
-    "@solana/web3.js": "1.31.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "antd": "4.17.2",
-    "millify": "4.0.0",
-    "notistack": "^1.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-ga": "^3.3.0",
-    "react-router-dom": "^6.0.2",
-    "react-scripts": "4.0.3",
-    "react-select": "^5.2.1",
-    "react-use": "^17.3.1",
-    "sass": "^1.38.2",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
-    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(@toruslabs)/\"",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.15.8",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "gh-pages": "^3.1.0"
-  }
+	"name": "credix-mvp",
+	"homepage": "https://spl-token-faucet.com",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@emotion/styled": "^11.10.6",
+		"@material-ui/core": "^4.12.3",
+		"@material-ui/icons": "^4.11.2",
+		"@mui/icons-material": "^5.11.11",
+		"@mui/material": "^5.11.13",
+		"@project-serum/anchor": "^0.26.0",
+		"@solana/spl-token": "^0.3.7",
+		"@solana/wallet-adapter-base": "^0.9.22",
+		"@solana/wallet-adapter-material-ui": "^0.16.29",
+		"@solana/wallet-adapter-react": "^0.15.31",
+		"@solana/wallet-adapter-wallets": "^0.19.15",
+		"@solana/web3.js": "^1.74.0",
+		"@testing-library/jest-dom": "^5.14.1",
+		"@testing-library/react": "^14.0.0",
+		"@testing-library/user-event": "^14.4.3",
+		"antd": "5.3.2",
+		"millify": "6.1.0",
+		"notistack": "^3.0.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-ga": "^3.3.0",
+		"react-router-dom": "^6.0.2",
+		"react-scripts": "5.0.1",
+		"react-select": "^5.2.1",
+		"react-use": "^17.3.1",
+		"sass": "^1.38.2",
+		"web-vitals": "^3.3.0"
+	},
+	"scripts": {
+		"start": "react-app-rewired start",
+		"build": "react-app-rewired build",
+		"test": "react-app-rewired test"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"defaults"
+		]
+	},
+	"devDependencies": {
+		"@babel/eslint-parser": "^7.15.8",
+		"node-polyfill-webpack-plugin": "^2.0.1",
+		"eslint": "^8.36.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-react": "^7.26.1",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"gh-pages": "^5.0.0",
+		"react-app-rewired": "^2.2.1"
+	}
 }
